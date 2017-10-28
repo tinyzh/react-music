@@ -11,8 +11,7 @@ class Progress extends Component {
     }
     changeProgress(e){
         let progressBar = this.progressBar
-        console.log(progressBar)
-        let progressP = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth
+        let progressP = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth  //当前鼠标的左边距-当前进度条的左边距  然后除以进度条宽度  得到当前的百分比
         this.props.onProgressChange && this.props.onProgressChange(progressP)
     }
 

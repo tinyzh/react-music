@@ -10,8 +10,6 @@ import {hashHistory, Router, Route, IndexRoute} from 'react-router'
 import Pubsub from 'pubsub-js'
 
 
-
-
 class App extends Component{
     constructor(props){
         super(props)
@@ -46,7 +44,8 @@ class App extends Component{
     componentDidMount(){
         $('#player').jPlayer({
             supplied : 'mp3',
-            wmode : 'window'
+            wmode : 'window',
+            volume: 0.3 //默认音量
         });
         this.playMusic(this.state.currentMusicItem)
         $('#player').bind($.jPlayer.event.ended, (e) => {

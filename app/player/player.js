@@ -20,14 +20,13 @@ class Player extends Component {
         super(props)
         this.state = {
             progress: 0,
-            valume: 0,
+            volume: 0,
             time: 0,
             isPlay: true
         }
     }
     componentWillMount(){
         if(this.props.isPlay){
-            console.log(this.props.isPlay)
             isPlayNow = this.props.isPlay
         }
         this.setState({
@@ -47,7 +46,6 @@ class Player extends Component {
                 time: e.jPlayer.status.currentTime,
                 progress: e.jPlayer.status.currentPercentAbsolute
             })
-
         })
     }
     componentWillUnmount(){
@@ -58,6 +56,7 @@ class Player extends Component {
         $('#player').jPlayer(this.state.isPlay ? 'play' : 'pause', duration * progress)
     }
     changeVolumeHandler(progress){
+        // 根据计算的百分比 更新音量
         $('#player').jPlayer('volume', progress)
     }
 
@@ -96,7 +95,7 @@ class Player extends Component {
                                 <div className="volume-container">
                                     <i className="icon-volume rt" style={{top:5, left: -5}}></i>
                                     <div className="volume-wrapper">
-                                        <Progress progress={this.state.volume} barColor="red" onProgressChange={this.changeVolumeHandler.bind(this)} />
+                                        <Progress progress={this.state.volume} barColor="blue" onProgressChange={this.changeVolumeHandler.bind(this)} />
                                     </div>
                                 </div>
                             </div>
