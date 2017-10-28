@@ -6,7 +6,19 @@ import './listitem.less'
 import Pubsub from 'pubsub-js'
 
 class MusicListItem extends Component {
-
+    constructor(){
+        super()
+        this.state = {
+            progress: 0
+        }
+    }
+    componentWillMount(){
+        $("#player").bind($.jPlayer.event.timeupdate, (e) => {
+            this.setState({
+                progress: e.jPlayer.status.currentPercentAbsolute
+            })
+        })
+    }
     
 
     handlePlayMusic(musicItem) {
@@ -28,7 +40,7 @@ class MusicListItem extends Component {
             >
                 <p className="pr">
                     <strong>{musicItem.title}</strong> - {musicItem.artist}
-                    <span className="list-per" style={{width: `${this.props.progress}%`}}></span>
+                    <span className="list-per" style={{width: `${this.props.focus ? this.state.progress : 0}%`}}></span>
                 </p>
                 <p
                     onClick={this.handleDeleteMusic.bind(this,musicItem)}
