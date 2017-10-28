@@ -45,7 +45,7 @@ class Player extends Component {
             this.setState({
                 volume: e.jPlayer.options.volume * 100,
                 time: e.jPlayer.status.currentTime,
-                progress: e.jPlayer.status.current
+                progress: e.jPlayer.status.currentPercentAbsolute
             })
 
         })
